@@ -1,48 +1,31 @@
 #include <stdio.h>
-#include <stdlib.h>
+
 /**
- * main - main block
- * Return: 0
+ * main - entry point
+ *
+ * Return: always 0
  */
 int main(void)
 {
-int c;
-int d;
-int e;
-int f = 0;
+	int c, c_two;
 
-while (f < 10)
-{
-	e = 0;
-	while (e < 10)
+	for (c = 0; c <= 98; c++)
 	{
-		d = 0;
-		while (d < 10)
+		for (c_two = c + 1; c_two <= 99; c_two++)
 		{
-			c = 0;
-			while (c < 10)
+			putchar('0' + c / 10);
+			putchar('0' + c % 10);
+			putchar(32);
+			putchar('0' + c_two / 10);
+			putchar('0' + c_two % 10);
+			if (c / 10 != 9 || c % 10 != 8)
 			{
-				if (!(f == c && e == d))
-				{
-					putchar('0' + f);
-					putchar('0' + e);
-					putchar(' ');
-					putchar('0' + d);
-					putchar('0' + c);
-					if (!(f + e == 18 && c + d == 17 && d == 9))
-					{
-						putchar(',');
-						putchar(' ');
-					}
-				}
-				c++;
+				putchar(44);
+				putchar(32);
 			}
-			d++;
 		}
-		e++;
 	}
-	f++;
-}
-putchar('\n');
-return (0);
+
+	putchar(10);
+	return (0);
 }
