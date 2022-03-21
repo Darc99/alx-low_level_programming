@@ -1,36 +1,29 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-
+#include "main.h"
 /**
- * main - program that generates random valid
- * passwords for the program 101-crackme
- *
- * Return: Always 0 (Success)
+ * _atoi - int
+ * @s: pointer
+ * Return: int.
  */
-
-int main(void)
+int _atoi(char *s)
 {
-	int i, sum, n;
-	int pass[100];
+	int i;
+	int res = 0;
+	int sig = -1;
+	int brk = 0;
 
-	sum = 0;
-
-	srand(time(NULL));
-
-	for (i = 0; i < 100; i++)
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		pass[i] = rand() % 78;
-		sum += (pass[i] + '0');
-		putchar(pass[i] + '0');
-		if ((2772 - sum) - '0' < 78)
+		if (s[i] == '-')
+			sig = sig * -1;
+		if (s[i] >= '0' && s[i] <= '9')
 		{
-			n = 2772 - sum - '0';
-			sum += n;
-			putchar(n + '0');
-			break;
+			res = res * 10;
+			res -= (s[i] - '0');
+			brk = 1;
 		}
+		else if (brk == 1)
+			break;
 	}
-
-	return (0);
+	res = sig * res;
+	return (res);
 }
