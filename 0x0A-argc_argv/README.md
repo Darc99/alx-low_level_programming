@@ -1,2 +1,2 @@
-argc 
-argv
+Argc
+Argv
